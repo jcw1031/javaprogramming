@@ -46,21 +46,22 @@ public class WordGameApp {
             System.out.print("참가자 이름 : ");
             this.p1[i]=new Player(s.next());
         }
-        String startWord = "와이파이", startText, endText, word;
+        String startWord = "와이파이", word;
+        char startText, endText;
         boolean con=true;
         System.out.println("시작 단어는 '"+ startWord +"'입니다.");
-        endText = startWord.substring(startWord.length()-1);
+        endText = startWord.charAt(startWord.length()-1);
         while(con){
             for (Player player : p1) {
                 player.input();
                 word = player.getWord();
-                startText = word.substring(0, 1);
-                if (!endText.equals(startText)) {
+                startText = word.charAt(0);
+                if (endText!=startText) {
                     con = false;
                     System.out.println(player.getName() + "이 졌습니다.");
                     break;
                 }
-                endText = word.substring(word.length() - 1);
+                endText = word.charAt(word.length() - 1);
             }
         }
     }
