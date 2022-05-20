@@ -49,7 +49,7 @@ public class ShapeTest {
                     ss = new Shape(figure[0], figure[1]);
                     break;
                 } else
-                    ss = new Shape(figure[0], figure[1], figure[2]); 
+                    ss = new Shape(figure[0], figure[1], figure[2]);
                 break;
             }
         }
