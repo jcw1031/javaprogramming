@@ -13,7 +13,7 @@ class Mart{
     public Mart(boolean member, int purchase){
         this.member=member;
         this.purchase=purchase;
-    }
+    } 
 
     public void setId(String id){
         this.id=id;
