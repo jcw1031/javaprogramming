@@ -27,7 +27,7 @@ class Mart{
 
         if(this.member){
             discount+=0.1;
-            System.out.println("회원 ID : "+this.id+"의 최종 결제 금액은 "+(int)(this.purchase*(1-discount))+"원 입니다.");
+            System.out.println("회원 ID : "+this.id+"님의 최종 결제 금액은 "+(int)(this.purchase*(1-discount))+"원 입니다.");
         }
         else
             System.out.println("최종 결제 금액은 "+(int)(this.purchase*(1-discount))+"원 입니다.");
