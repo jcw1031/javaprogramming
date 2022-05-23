@@ -1,4 +1,4 @@
-package p1;
+package week11;
 
 import java.util.*;
 
@@ -13,7 +13,7 @@ class Mart{
     public Mart(boolean member, int purchase){
         this.member=member;
         this.purchase=purchase;
-    } 
+    }
 
     public void setId(String id){
         this.id=id;

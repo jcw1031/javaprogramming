@@ -1,4 +1,4 @@
-package p1;
+package week11;
 import java.util.*;
 
 class Player{
