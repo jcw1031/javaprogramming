@@ -30,8 +30,7 @@ class Conversion {
             }
             num /= 16; //num을 16으로 나눈 몫을 저장
         }
-        if(num!=0)
-            hex = num + hex; //hex 문자열 앞에 num 추가
+        hex = num + hex; //hex 문자열 앞에 num 추가
     }
 
     //---------------------------------------------------------------- 2진수 -> 16진수
@@ -108,7 +107,10 @@ class Conversion {
                 }
             }
         }
-        bin=bin.substring(bin.indexOf("1")); //만약 맨 앞에 0이 있게 되면 무시하고 저장
+        if(bin.indexOf("1")!=-1) //입력된 값이 0이 아닐 경우 실행
+            bin=bin.substring(bin.indexOf("1")); //만약 맨 앞에 0이 있게 되면 무시하고 저장
+        else //입력된 값이 0인 경우
+            bin="0";
     }
 
     //---------------------------------------------------------------- 2진수 -> 10진수
@@ -116,13 +118,8 @@ class Conversion {
         count = bin.length();
 
         for(int i=count;i>0;i--){ //bin 문자열 길이부터
-            if(bin.charAt(i-1)=='1'){ //bin 문자열에서 i-1 인덱스에 있는 값이 1이면
-                temp+=Math.pow(2, exponent); //temp에 2의 exponent 승을 더함
-                exponent++;
-            }
-            else{
-                exponent++;
-            }
+            temp+=(bin.charAt(i-1)-48)*Math.pow(2, exponent); //temp에 2의 exponent 승과 bin의 i-1 인덱스에 있는 값을 곱하여 더함
+            exponent++;
         }
         this.num=temp; //temp 값을 num에 저장
     }
