@@ -46,13 +46,8 @@ class Conversion {
             bin=bin.substring(index); //sub에 저장하고 남은 문자열을 다시 bin에 저장
 
             for(int i=sub.length();i>0;i--){ //sub 문자열 길이부터
-                if(sub.charAt(i-1)=='1'){ //sub 문자열에서 i 인덱스에 있는 값이 1이면
-                    temp+=Math.pow(2, exponent); //temp에 2의 exponent 승을 더함
-                    exponent++;
-                }
-                else{
-                    exponent++;
-                }
+                temp+=(sub.charAt(i-1)-48)*Math.pow(2, exponent); //temp에 2의 exponent 승을 더함
+                exponent++;
             }
             this.hex+=temp;
         }
@@ -64,13 +59,8 @@ class Conversion {
             bin=bin.substring(4); //sub에 저장하고 남은 문자열 bin에 저장
 
             for(int j=4;j>0;j--){ //4번 반복
-                if(sub.charAt(j-1)=='1'){ //sub 문자열의 j 인덱스에 있는 값이 1이면
-                    temp+=Math.pow(2, exponent); //temp에 2의 exponent 승을 더함
+                    temp+=(sub.charAt(j-1)-48)*Math.pow(2, exponent); //temp에 2의 exponent 승을 더함
                     exponent++;
-                }
-                else{
-                    exponent++;
-                }
             }
 
             if(temp>=10){ //만약 temp 값이 10 이상이면
@@ -93,7 +83,8 @@ class Conversion {
             if(Character.isAlphabetic(sub)){ //만약 sub에 저장했던 문자가 알파벳이면 수행
                 temp = sub-55; //아스키 코드 이용
             }
-            else temp = sub-48; //아스키 코드 이용
+            else //숫자일 때 수행
+                temp = sub-48; //아스키 코드 이용
 
             while (temp > 1) { //1/2은 정수형으로 0이므로, 1보다 클 때만 연산 수행
                 bin = temp % 2 + bin; //나머지는 1 아니면 0. bin 문자열의 맨 앞에 나머지를 추가
