@@ -9,8 +9,8 @@ abstract class Stack{
 }
 
 class StackString extends Stack{
-    int count=0;
-    String[] stack=new String[this.length()];
+    int topOfStack=0;
+    String[] stack = new String[length()];
 
     @Override
     int length() {
@@ -19,16 +19,27 @@ class StackString extends Stack{
 
     @Override
     String pop() {
-        count--;
-        return stack[count+1];
+        if(topOfStack==0){
+            System.out.println("underflow");
+            return "";
+        }
+        else{
+            topOfStack--;
+            return stack[topOfStack];
+        }
     }
 
     @Override
     boolean push(String ob) {
-        this.stack[count]=ob;
-        count++;
-
-        return true;
+        if(topOfStack>stack.length){
+            System.out.println("overflow");
+            return false;
+        }
+        else{
+            stack[topOfStack]=ob;
+            topOfStack++;
+            return true;
+        }
     }
 }
 
@@ -37,27 +48,13 @@ public class StackManager {
         Scanner s = new Scanner(System.in);
         Stack ob = new StackString();
 
-        for(int i=0;i<ob.length();i++){
+        System.out.print(">> ");
+
+        for(int i=0;i<ob.length();i++) {
             ob.push(s.next());
         }
-
-        ob= new Stack() {
-            @Override
-            int length() {
-                return 5;
-            }
-
-            @Override
-            String pop() {
-                return null;
-            }
-
-            @Override
-            boolean push(String ob) {
-                return false;
-            }
-        };
-
-
+        for(int i=0;i<ob.length();i++){
+            System.out.print(ob.pop()+" ");
+        }
     }
 }
