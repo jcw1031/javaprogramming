@@ -3,9 +3,9 @@ package week12;
 abstract class Car{
     String name; //자동차 이름
     int price; //자동차 가격
-    void printInfo(){ //자동차 정보 출력 메소드
-        System.out.print("name : "+this.name);
-        System.out.println("\t\tPrice : "+this.price);
+    void printInfo() { //자동차 정보 출력 메소드
+        System.out.print("name : " + this.name);
+        System.out.println("\t\tPrice : " + this.price);
     }
     abstract void printSignature(); //추상 메소드
 }
