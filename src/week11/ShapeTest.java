@@ -29,29 +29,26 @@ public class ShapeTest {
         Scanner s = new Scanner(System.in);
 
         String input;
+        String[] split;
         Shape ss;
-
         while (true) {
             System.out.println("수치를 입력하세요 (1개 : 직선, 2개 : 직사각형, 3개 : 직육면체)");
             input = s.nextLine();
-            String[] split = (input.split(" "));
+            split = (input.split(" "));
             if (split.length == 0 || split.length > 3) {
                 System.out.println("1개 ~ 3개의 수치를 입력하세요.");
-            } else {
-                int[] figure = new int[split.length];
-                for (int i = 0; i < figure.length; i++) {
-                    figure[i] = Integer.parseInt(split[i]);
-                }
-                if (figure.length == 1) {
-                    ss = new Shape(figure[0]);
-                    break;
-                } else if (figure.length == 2) {
-                    ss = new Shape(figure[0], figure[1]);
-                    break;
-                } else
-                    ss = new Shape(figure[0], figure[1], figure[2]);
+            } else
                 break;
-            }
         }
+        int[] figure = new int[split.length];
+        for (int i = 0; i < figure.length; i++) {
+            figure[i] = Integer.parseInt(split[i]);
+        }
+        if (figure.length == 1) {
+            ss = new Shape(figure[0]);
+        } else if (figure.length == 2) {
+            ss = new Shape(figure[0], figure[1]);
+        } else
+            ss = new Shape(figure[0], figure[1], figure[2]);
     }
 }
