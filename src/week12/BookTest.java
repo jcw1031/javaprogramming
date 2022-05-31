@@ -15,10 +15,14 @@ abstract class Book{
 class Comic extends Book{
     public Comic(String name, int price){ //생성자. 책 이름, 책 가격 초기화
         super(name, price);
-    }@Override
+    }
+
+    @Override
     public void printInfo(){ //추상 메소드 오버라이딩. 책 정보 출력
         System.out.printf("책의 이름은 '%s'이고 장르는 만화책입니다.\n판매 가격은 %.0f원 입니다.\n", this.name, this.salePrice());
     }
+
+    @Override
     public double salePrice(){ //추상 메소드 오버라이딩. 할인률 계산
         return this.price*0.9;
     }
@@ -28,9 +32,13 @@ class Fiction extends Book{
     public Fiction(String name, int price){ //생성자. 책 이름, 책 가격 초기화
         super(name, price);
     }
+
+    @Override
     public void printInfo(){ //추상 메소드 오버라이딩. 책 정보 출력
         System.out.printf("책의 이름은 '%s'이고 장르는 소설입니다.\n판매 가격은 %.0f원 입니다.\n", this.name, this.salePrice());
     }
+
+    @Override
     public double salePrice(){ //추상 메소드 오버라이딩. 할인률 계산
         return this.price*0.85;
     }
@@ -40,9 +48,13 @@ class Magazine extends Book{
     public Magazine(String name, int price){ //생성자. 책 이름, 책 가격 초기화
         super(name, price);
     }
+
+    @Override
     public void printInfo(){ //추상 메소드 오버라이딩. 책 정보 출력
         System.out.printf("책의 이름은 '%s'이고 장르는 잡지입니다.\n판매 가격은 %.0f원 입니다.\n", this.name, this.salePrice());
     }
+
+    @Override
     public double salePrice(){ //추상 메소드 오버라이딩. 할인률 계산
         return this.price*0.95;
     }
