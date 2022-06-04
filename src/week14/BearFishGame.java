@@ -4,7 +4,7 @@ import java.util.*;
 abstract class GameObject{
     protected int distance; //한 번 이동 거리
     protected int x, y; //현재 위치 (화면 맵 상의 위치)
-    static int count=0; //fish가 5번 중 4, 5번 째에 이동할 수 있도록 횟수를 세는 용도
+    //static int count=0; //fish가 5번 중 4, 5번 째에 이동할 수 있도록 횟수를 세는 용도
 
     public GameObject(int startX, int startY, int distance){ //초기 위치와 이동 거리
         this.x=startX;
@@ -50,9 +50,9 @@ class Bear extends GameObject{
             y+=distance;
         }
         else{
-            System.out.print("\n\n범위를 벗어납니다. 키를 잘 입력해 주세요."); //범위를 벗어나는 키를 입력하면 잘 입력하라는 문구 출력
+            System.out.print("\n\n키를 잘 입력해 주세요."); //범위를 벗어나는 키를 입력하면 잘 입력하라는 문구 출력
         }
-        count++; //count 1 증가
+        //count++; //count 1 증가
     }
 
     @Override
@@ -68,7 +68,7 @@ class Fish extends GameObject{
 
     @Override
     protected void move() { //새로운 위치를 설정하는 메소드
-        if (count % 5 == 4 || count % 5 == 0) { //5번 중 4, 5번째에 이동
+        //if (count % 5 == 4 || count % 5 == 0) { //5번 중 4, 5번째에 이동
             int ran = (int) (Math.random() * 4); //0~3 네 개의 수 중에 임의로 한 수를 ran에 저장
             switch (ran) {
                 case 0: {
@@ -90,8 +90,9 @@ class Fish extends GameObject{
                     }
                 }
             }
+        System.out.print("물고기 움직임");
         }
-    }
+    //}
     @Override
     protected char getShape() {
         return '@';
@@ -101,6 +102,7 @@ class Fish extends GameObject{
 public class BearFishGame {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
+        int count=0;
 
         Bear b = new Bear(0, 0, 1); //Bear 클래스 객체 생성 -> x : 0, y : 0, 한 번에 이동할 칸 수 : 1
         Fish f = new Fish((int) (Math.random() * 20), (int) (Math.random() * 10), 1);
@@ -119,7 +121,10 @@ public class BearFishGame {
             System.out.print("→ : d\t ← : a\t ↑ : w\t ↓ : s\t\t 입력 : ");
             b.setC(s.next()); //Bear 객체의 c에 입력받은 문자열 저장
             b.move(); //새로운 위치를 설정하는 메소드 호출
-            f.move(); //새로운 위치를 설정하는 메소드 호충
+            count++;
+            if(count%5==4 || count%5==0) {
+                f.move(); //새로운 위치를 설정하는 메소드 호충
+            }
             System.out.println("\n");
         }
         System.out.println("Bear Wins!"); //Bear와 Fish가 만나서 반복문이 종료. Bear Wins!
