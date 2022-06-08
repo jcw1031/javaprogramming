@@ -103,6 +103,7 @@ public class BearFishGame {
     public static void main(String[] args) {
         Scanner s = new Scanner(System.in);
         int count=0;
+        int fishMove=0;
 
         Bear b = new Bear(0, 0, 1); //Bear 클래스 객체 생성 -> x : 0, y : 0, 한 번에 이동할 칸 수 : 1
         Fish f = new Fish((int) (Math.random() * 20), (int) (Math.random() * 10), 1);
@@ -121,10 +122,24 @@ public class BearFishGame {
             System.out.print("→ : d\t ← : a\t ↑ : w\t ↓ : s\t\t 입력 : ");
             b.setC(s.next()); //Bear 객체의 c에 입력받은 문자열 저장
             b.move(); //새로운 위치를 설정하는 메소드 호출
-            count++;
-            if(count%5==4 || count%5==0) {
-                f.move(); //새로운 위치를 설정하는 메소드 호충
+            Random random = new Random();
+            int ran = random.nextInt(2);
+            if(count%5==0){
+                fishMove=0;
             }
+            if(ran==1 && fishMove<2){
+                f.move();
+                fishMove++;
+            }
+            if(count%5==3 && fishMove==0) {
+                f.move(); //새로운 위치를 설정하는 메소드 호출
+                fishMove++;
+            }
+            if(count%5==4 && fishMove==1){
+                f.move();
+                fishMove++;
+            }
+            count++;
             System.out.println("\n");
         }
         System.out.println("Bear Wins!"); //Bear와 Fish가 만나서 반복문이 종료. Bear Wins!
