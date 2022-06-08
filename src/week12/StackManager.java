@@ -9,7 +9,7 @@ abstract class Stack{
 }
 
 class StackString extends Stack{
-    int topOfStack=0;
+    int tos=-1;
     String[] stack = new String[length()];
 
     @Override
@@ -19,25 +19,25 @@ class StackString extends Stack{
 
     @Override
     String pop() {
-        if(topOfStack==0){
+        if(tos==-1){
             System.out.println("underflow");
             return "";
         }
         else{
-            topOfStack--;
-            return stack[topOfStack];
+            String tmp=stack[tos];
+            stack[tos--]=null;
+            return tmp;
         }
     }
 
     @Override
     boolean push(String ob) {
-        if(topOfStack>stack.length){
+        if(tos==stack.length){
             System.out.println("overflow");
             return false;
         }
         else{
-            stack[topOfStack]=ob;
-            topOfStack++;
+            stack[++tos]=ob;
             return true;
         }
     }

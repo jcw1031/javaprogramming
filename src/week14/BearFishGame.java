@@ -69,29 +69,23 @@ class Fish extends GameObject{
     @Override
     protected void move() { //새로운 위치를 설정하는 메소드
         //if (count % 5 == 4 || count % 5 == 0) { //5번 중 4, 5번째에 이동
-            int ran = (int) (Math.random() * 4); //0~3 네 개의 수 중에 임의로 한 수를 ran에 저장
-            switch (ran) {
-                case 0: {
-                    if (x < 19) x += distance; //fish가 범위를 벗어나지 않도록 조건문 사용
-                    break;
-                }
-                case 1: {
-                    if (x > 0) x -= distance;
-                    break;
-                }
-                case 2: {
-                    if (y < 9) y += distance;
-                    break;
-                }
-                case 3: {
-                    if (y > 0) {
-                        y -= distance;
-                        break;
-                    }
-                }
+        int ran = (int) (Math.random() * 4); //0~3 네 개의 수 중에 임의로 한 수를 ran에 저장
+        switch (ran) {
+            case 0 -> {
+                if (x < 19) x += distance;
+            } //fish가 범위를 벗어나지 않도록 조건문 사용}
+            case 1 -> {
+                if (x > 0) x -= distance;
             }
-        System.out.print("물고기 움직임");
+            case 2 -> {
+                if (y < 9) y += distance;
+            }
+            case 3 -> {
+                if (y > 0) y -= distance;
+            }
         }
+        System.out.print("물고기 움직임");
+    }
     //}
     @Override
     protected char getShape() {
