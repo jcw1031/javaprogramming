@@ -2,10 +2,10 @@ package week11;
 import java.util.*;
 
 class Conversion {
-    private int num = 0; //10진수 저장하는 변수
+    private long num = 0; //10진수 저장하는 변수
     private String bin = ""; //2진수 저장하는 변수
     private String hex = ""; //16진수 저장하는 변수
-    private int temp=0; //hex, bin 문자열에 추가하기 전 정수형으로 저장하기 위한 용도
+    private long temp=0; //hex, bin 문자열에 추가하기 전 정수형으로 저장하기 위한 용도
     private int count; //for문 반복 횟수 결정하기 위한 변수
     private String sub = ""; //입력받은 2진수, 16진수에서 계산할 일부분을 저장하는 용도
     private int exponent=0; //지수부로 사용
@@ -98,7 +98,7 @@ class Conversion {
                 }
             }
         }
-        if(bin.indexOf("1")!=-1) //입력된 값이 0이 아닐 경우 실행
+        if(bin.contains("1")) //입력된 값이 0이 아닐 경우 실행
             bin=bin.substring(bin.indexOf("1")); //만약 맨 앞에 0이 있게 되면 무시하고 저장
         else //입력된 값이 0인 경우
             bin="0";
